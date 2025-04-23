@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/artplayer/5.0.9/artplayer.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .artplayer-app {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="artplayer-app"></div>
+    <script>
+        const url = new URL(window.location.href).searchParams.get('url');
+        
+        const art = new Artplayer({
+            container: '.artplayer-app',
+            url: url,
+            volume: 0.5,
+            autoplay: false,
+            pip: true,
+            screenshot: true,
+            setting: true,
+            loop: true,
+            flip: true,
+            playbackRate: true,
+            aspectRatio: true,
+            fullscreen: true,
+            fullscreenWeb: true,
+            subtitleOffset: true,
+            miniProgressBar: true,
+            mutex: true,
+            backdrop: true,
+            playsInline: true,
+            theme: '#23ade5',
+            lang: navigator.language.toLowerCase(),
+            whitelist: ['*'],
+            moreVideoAttr: {
+                crossOrigin: 'anonymous',
+            }
+        });
+
+        art.on('ready', () => {
+            art.fullscreen = true;
+        });
+    </script>
+</body>
+</html>
